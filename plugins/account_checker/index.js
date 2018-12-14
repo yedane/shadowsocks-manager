@@ -369,3 +369,42 @@ const checkAccount = async (serverId, accountId) => {
     }
   }
 })();
+
+
+//账号过期邮件提醒
+const remind = async () => {
+  logger.info('开始检查账号过期');
+  try {
+    const users = await knex('user').select()
+      .where({ 'type': 'normal' });
+    let count = 0;
+    for (const user of users) {
+      let account = await knex('account_plugin').select()
+        .where({ 'userId': user.id });
+      //不提醒多账号的用户
+      if (account.length != 1) {
+        continue;
+      } else {
+        account = account[0];
+      }
+      //检查过期时间 提前一天提醒
+      let expireTime = expireDate(account);
+      if (expireTime < 0) continue;
+      //取得网站信息
+      const baseSetting = await knex('webguiSetting').where({
+        key: 'base'
+      }).then(s => s[0]).then(s => JSON.parse(s.value));
+      await emailPlugin.sendMail(user.email, '账号过期提醒', `您的账号即将于 ${moment(expireTime).format("YYYY-MM-DD HH:mm:ss")} 过期，请及时续费，以免影响使用。(${baseSetting.title})`);
+      count++;
+    }
+    
+    isTelegram && telegram.push(`已通过邮件提醒 ${count} 人账号即将到期`);
+    logger.info(`账号到期邮件提醒 ${count} 人`)
+  } catch (err) {
+    logger.info('邮件提醒出错', err)
+  }
+};
+cron.cron(() => {
+  logger.info('每天10点执行');
+  remind();
+}, '2 10 * * *');
