@@ -1,3 +1,28 @@
+<div flex layout="column">
+    <div>
+        <md-toolbar>
+            <div class="md-toolbar-tools" ng-hide="publicInfo.searchBar">
+                <md-button hide-gt-sm class="md-icon-button" aria-label="menu" ng-click="menuButton()">
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <div>{{ config.title }}</div>
+                <span flex></span>
+                <md-button hide-sm hide-xs ng-repeat="menu in menus" aria-label="menu.icon" ng-click="menuClick($index)">
+                    {{ menu.name | translate }}
+                </md-button> 
+                <md-button aria-label="language menu" class="md-icon-button" ng-click="chooseLanguage()">
+                    <md-icon class="material-icons">language</md-icon>
+                </md-button>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </div>
+    <div flex layout="row">
+        <md-content flex layout="row">
+            <div ui-view flex autoscroll="true"></div>
+        </md-content>
+    </div>
+</div>
 <div layout="column" hide-gt-sm>
     <div flex="15" style="height: 40px;"></div>
     <div flex layout="row">
