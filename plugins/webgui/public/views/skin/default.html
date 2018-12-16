@@ -1,15 +1,133 @@
-<div layout-fill layout="column" layout-align="space-between center">
-    <div flex="75" layout="column" layout-align="center center" style="width: 100%;">
-        <img src="/favicon.png" style="margin: 5vw; width: 300px;">
+<div class="skin" layout-fill layout="column" layout-align="center center">
+  <div class="skin_logo">
+    <img flex src="/favicon.png">
+  </div>
+  <div class="skin_line"></div>
+  <div class="skin_content">
+    <div class="skin_inner">{{ config.title }}</div>
+  </div>
+  <div class="skin_line"></div>
+  <div class="skin_menu">
+    <div layout="row" layout-align="center center">
+      <div flex>
+        <a href="/home/login">登录</a>
+      </div>
+      <div flex>
+        <a href="/home/signup">注册</a>
+      </div>
     </div>
-    <div layout="row" layout-align="space-around center" style="width: 100%;">
-        <div flex="30" flex-gt-sm="35" hide-xs hide-sm></div>
-        <div flex layout="row" layout-align="center center" style="background-color: rgba(250, 250, 250, 0.65);">
-            <div flex layout="row" layout-align="center center"><md-button style="width: 80%;" href="/home/login" translate>登录</md-button></div>
-            <div flex layout="row" layout-align="center center"><md-button style="width: 80%;" href="/home/signup" translate>注册</md-button></div>
-        </div>
-        <div flex="30" flex-gt-sm="35" hide-xs hide-sm></div>
-    </div>
-    <div flex="25" hide-xs hide-sm></div>
+  </div>
+  <div class="skin_line_short"></div>
+  <div class="skin_circle"></div>
+  <div flex="15"></div>
 </div>
-<a href="https://github.com/shadowsocks/shadowsocks-manager"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9;" src="/libs/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+<style>
+  .skin {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%),url('//bing.ioliu.cn/v1/rand') no-repeat center center fixed;
+    background-size: cover;
+  }
+  .skin_logo {
+    width: 4.75rem;
+    height: 4.75rem;
+    line-height: 4.75rem;
+    border: solid 1px #fff;
+    border-radius: 100%;
+    text-align: center;
+  }
+  .skin_logo > img {
+    vertical-align: middle;
+    width: 70%;
+    margin-bottom: 0.75rem;
+  }
+  .skin_line {
+    width: 1px;
+    height: 50px;
+    background: #fff;
+  }
+  .skin_line_short {
+    width: 1px;
+    height: 35px;
+    background: #fff;
+  }
+  .skin_circle {
+    width: 1rem;
+    height: 1rem;
+    line-height: 4.75rem;
+    border: solid 1px #fff;
+    border-radius: 100%;
+    text-align: center;
+  }
+  .skin_content {
+    border-style: solid;
+    border-color: #fff;
+    border-top-width: 1px;
+    border-left-width: 0px;
+    border-bottom-width: 1px;
+    border-right-width: 0px;
+    max-width: 100%;
+  }
+  .skin_inner {
+    font-size: 1.75rem;
+    line-height: 1.4;
+    letter-spacing: .5rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 0;
+    margin-top: 5vh;
+    margin-bottom: 8vh;
+  }
+  .skin_menu_line {
+    width: 1px;
+    height: 30px;
+    background: #fff;
+  }
+  .skin_menu > div {
+    width: 125px;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 10px;
+  }
+  .skin_menu > div > div {
+    text-align: center;
+  }
+  .skin_menu a {
+    color: #FFF;
+    font-size: 0.9em;
+    text-decoration: none;
+  }
+
+  @media (min-width: 960px) {
+    .skin_logo {
+      width: 6.75rem;
+      height: 6.75rem;
+      line-height: 6.75rem;
+      border: solid 1px #fff;
+      border-radius: 100%;
+      text-align: center;
+    }
+    .skin_inner {
+      font-size: 2rem;
+      margin-top: 6vh;
+      margin-bottom: 9vh;
+      margin-left: 2em;
+      margin-right: 2em; 
+    }
+    .skin_menu > div {
+      width: 150px;
+      padding: 15px;
+    }
+    .skin_menu a {
+      font-size: 1.1em;
+    }
+    .skin_line {
+      height: 60px;
+    }
+    .skin_line_short {
+      height: 40px;
+    }
+  }
+</style>
