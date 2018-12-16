@@ -39,16 +39,16 @@ app.factory('subscribeDialog', [ '$mdDialog', '$http', ($mdDialog, $http) => {
       $scope.publicInfo = bind;
       const config = configManager.getConfig();
       $scope.changeLinkType = () => {
-        $scope.publicInfo.subscribeLink = `${config.site}/api/user/account/subscribe/${$scope.publicInfo.token}?stype=${$scope.publicInfo.linkType}&ip=${$scope.publicInfo.ip}`;
+        $scope.publicInfo.subscribeLink = `${config.site}/api/user/account/subscribe/${$scope.publicInfo.token}?ssr=${$scope.publicInfo.linkType}&ip=${$scope.publicInfo.ip}`;
       };
       $scope.publicInfo.getSubscribe().then(success => {
         $scope.publicInfo.token = success.data.subscribe;
-        $scope.publicInfo.subscribeLink = `${config.site}/api/user/account/subscribe/${$scope.publicInfo.token}?stype=${$scope.publicInfo.linkType}&ip=${$scope.publicInfo.ip}`;
+        $scope.publicInfo.subscribeLink = `${config.site}/api/user/account/subscribe/${$scope.publicInfo.token}?ssr=${$scope.publicInfo.linkType}&ip=${$scope.publicInfo.ip}`;
       });
       $scope.publicInfo.updateLink = () => {
         $scope.publicInfo.updateSubscribe().then(success => {
           $scope.publicInfo.token = success.data.subscribe;
-          $scope.publicInfo.subscribeLink = `${config.site}/api/user/account/subscribe/${$scope.publicInfo.token}?stype=${$scope.publicInfo.linkType}&ip=${$scope.publicInfo.ip}`;
+          $scope.publicInfo.subscribeLink = `${config.site}/api/user/account/subscribe/${$scope.publicInfo.token}?ssr=${$scope.publicInfo.linkType}&ip=${$scope.publicInfo.ip}`;
         });
       };
       $scope.toast = () => {

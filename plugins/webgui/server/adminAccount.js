@@ -195,7 +195,6 @@ exports.getSubscribeAccountForUser = async (req, res) => {
             }
 
             const flowInfo = await flow.getServerPortFlowWithScale(0, accountInfo.id, [accountInfo.data.from, accountInfo.data.to], 1);
-            console.log('flowInfo', flowInfo)
            
             let tip = '';
             if (ssr == 0) {
@@ -220,7 +219,6 @@ exports.getSubscribeAccountForUser = async (req, res) => {
 
             let result = '';
             if (ssr == 2) {
-                console.log("ssr 2");
                 let obj = {
                     airport: baseSetting.title,
                     port: 12580,
