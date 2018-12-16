@@ -246,10 +246,6 @@ exports.getSubscribeAccountForUser = async (req, res) => {
                 return res.send(result);
             } else {
                 result = subscribeAccount.server.map(s => {
-                    console.log("server info: " + accountInfo.server);
-                    console.log("server info: " + s.host + "|" + s.id);
-                    console.log("server info: " + ((accountInfo.server || []).indexOf(s.host) < 0));
-
           			// let tag = (accountInfo.type > 1 && (accountInfo.server || []).indexOf(s.id) < 0) ? '' : '';
                     if (ssr == 0) {
                         return 'ss://' + Buffer.from(s.method + ':' + subscribeAccount.account.password + '@' + s.host + ':' + (subscribeAccount.account.port + s.shift)).toString('base64') + '#' + (s.comment || '这里显示备注');
